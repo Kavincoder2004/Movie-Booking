@@ -1,0 +1,427 @@
+body {
+  background: black;
+}
+
+.navbar ul li {
+  list-style: none;
+  text-decoration-style: none;
+
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar ul {
+  margin-left: 400px;
+  margin-top: 9px;
+}
+
+.btn {
+  border-radius: 14px;
+  background: linear-gradient(45deg, #7f00ff, #e100ff);
+}
+
+.nav-links a:hover {
+  color: orange;
+}
+
+.btn:hover {
+  background-color: orange !important;
+}
+
+.gradient-heading {
+  background: linear-gradient(45deg, #7f00ff, #e100ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.Poster {
+  background-image: url('/Images/Poster.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 570px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .Poster {
+    height: 350px;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+}
+
+.Poster-button {
+  background: linear-gradient(45deg, #7f00ff, #e100ff);
+  color: white;
+  margin-left: 160px !important;
+}
+
+.Trailer-button {
+  background: white;
+  color: black;
+
+  margin-left: 120px !important;
+}
+
+@media (max-width: 768px) {
+
+  .Poster-button,
+  .Trailer-button {
+    margin-left: 10px !important;
+    margin-top: 0;
+  }
+}
+
+.below-head {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-left: 60px;
+  background: linear-gradient(45deg, #7f00ff, #e100ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .below-head {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+}
+
+.view {
+  margin-top: 45px;
+  margin-right: 60px !important;
+  background: linear-gradient(90deg, #f12711, #f5af19);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+@media (max-width: 768px) {
+  .view {
+    margin-right: 20px !important;
+    margin-top: 35px;
+  }
+}
+
+.card {
+  width: 100%;
+  min-height: 400px;
+  /* or any fixed width you want */
+  background: rgba(255, 255, 255, 0.1);
+  /* semi-transparent background */
+  backdrop-filter: blur(12px);
+  /* blur intensity */
+  -webkit-backdrop-filter: blur(12px);
+  /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0 auto;
+  border-radius: 9px;
+}
+
+.card img {
+  padding: 13px;
+  height: 350px;
+
+
+}
+
+.card-body {
+  color: white;
+}
+
+.swiper-button-next {
+  right: -50px;
+  /* push arrow further to the right */
+}
+
+.swiper-button-prev {
+  left: -1200px;
+  /* push arrow further to the left */
+}
+
+.Movie-Details-btn {
+  background: transparent;
+  color: black;
+  border: black solid 1px;
+  border-radius: 10px;
+  margin-left: 1px !important;
+}
+
+.Movie-Cert-btn {
+  background: transparent;
+  color: black;
+  border: black solid 1px;
+  border-radius: 10px;
+  margin-left: 10px !important;
+}
+
+.Movie-Genre-btn {
+  background: transparent;
+  color: black;
+  border: black solid 1px;
+  border-radius: 10px;
+  margin-left: 10px !important;
+}
+
+.Date-Button {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 1px !important;
+  width: 60px;
+  font-weight: bolder;
+
+}
+
+.Date-Button:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.Date-Button-1 {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  width: 60px;
+  font-weight: bolder;
+
+}
+
+.Date-Button-1:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.Date-Button-2 {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  width: 60px;
+  font-weight: bolder;
+}
+
+.Date-Button-2:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.Date-Button-3 {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  width: 60px;
+  font-weight: bolder;
+}
+
+.Date-Button-3:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.Date-Button-4 {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  width: 60px;
+  color: gray;
+  font-weight: bolder;
+}
+
+.Date-Button-4:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.Date-Button-5 {
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px !important;
+  width: 60px;
+  color: gray;
+
+}
+
+.Date-Button-5:hover {
+  background-color: red !important;
+  color: white;
+}
+
+.badge {
+  border-left: 3px solid green;
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+  border-right: 1px solid green;
+  height: 30px;
+  width: 90px;
+  padding: 9px;
+
+}
+
+/* Wrapper */
+.booking-wrapper {
+  background: linear-gradient(135deg, #f9f9f9, #ececec);
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Theater header */
+.booking-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.booking-header h2 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.booking-header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.timings-bar {
+  margin-top: 10px;
+}
+
+.timings-bar .badge {
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Screen bar */
+.screen {
+  width: 80%;
+  height: 30px;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Seat grid */
+.seat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .seat-container {
+    gap: 8px;
+  }
+}
+
+.seat-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Individual seat */
+.seat {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .seat {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* Hover effect */
+.seat:hover {
+  background: orangered;
+  color: #fff;
+  border-color: black;
+  transform: scale(1.1);
+}
+
+/* Selected seat (future logic) */
+.seat.selected {
+  background: #4caf50;
+  color: #fff;
+  border-color: black;
+}
+
+/* Booked seat (future logic) */
+.seat.booked {
+  background: #f44336;
+  color: #fff;
+  border-color: #f44336;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  background: #e0e0e0;
+  margin: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.seat:hover {
+  background: #bdbdbd;
+}
+
+.seat.selected {
+  background: #2196f3;
+  color: white;
+}
