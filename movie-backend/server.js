@@ -23,16 +23,7 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-  origin: (origin, callback) => {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      // In production, you might want to be more strict. 
-      // For now, let's allow all during initial deployment to avoid blockers.
-      return callback(null, true);
-    }
-    return callback(null, true);
-  },
+  origin: true,
   credentials: true
 }));
 app.use(express.json());
