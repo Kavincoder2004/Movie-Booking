@@ -24,14 +24,15 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/movies")
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.get(`${API_URL}/movies`)
       .then(res => setMovies(res.data))
       .catch(err => {
         console.error("Error fetching movies:", err);
         setError("Failed to load movies. Please check if your backend is running.");
       });
 
-    axios.get("http://localhost:5000/api/theaters")
+    axios.get(`${API_URL}/theaters`)
       .then(res => {
         console.log("Fetched theaters:", res.data);
         setTheaters(res.data);
@@ -68,7 +69,7 @@ function App() {
             <Route path="/booking/:showId" element={<SeatBooking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
 
           </Routes>
         )}

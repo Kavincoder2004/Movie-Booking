@@ -10,7 +10,8 @@ function SeatBooking() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/shows/${showId}`)
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.get(`${API_URL}/shows/${showId}`)
       .then(res => {
         setShow(res.data);
         setLoading(false);
@@ -43,7 +44,8 @@ function SeatBooking() {
   const handleBookNow = () => {
     if (selectedSeats.length === 0) return;
 
-    axios.patch(`http://localhost:5000/api/shows/${showId}/book`, { seats: selectedSeats })
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.patch(`${API_URL}/shows/${showId}/book`, { seats: selectedSeats })
       .then(res => {
         alert(`Booking successful for seats: ${selectedSeats.join(", ")}`);
         setShow(prev => ({ ...prev, booked_seats: res.data.booked_seats }));
@@ -57,7 +59,8 @@ function SeatBooking() {
   const handleUnbookNow = () => {
     if (seatsToUnbook.length === 0) return;
 
-    axios.patch(`http://localhost:5000/api/shows/${showId}/unbook`, { seats: seatsToUnbook })
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.patch(`${API_URL}/shows/${showId}/unbook`, { seats: seatsToUnbook })
       .then(res => {
         alert(`Unbooked seats: ${seatsToUnbook.join(", ")}`);
         setShow(prev => ({ ...prev, booked_seats: res.data.booked_seats }));

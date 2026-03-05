@@ -15,7 +15,8 @@ function Register() {
         setLoading(true);
         setError('');
         try {
-            await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+            const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+            await axios.post(`${API_URL}/auth/register`, { username, email, password });
             navigate('/login');
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed. Please try again.');

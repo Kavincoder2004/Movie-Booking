@@ -17,7 +17,8 @@ function Profile() {
       return;
     }
 
-    axios.get(`http://localhost:5000/api/users/${userId}`)
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.get(`${API_URL}/users/${userId}`)
       .then(res => {
         console.log("Fetched user:", res.data);
         setUser(res.data);

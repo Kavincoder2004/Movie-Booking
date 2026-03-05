@@ -22,7 +22,8 @@ function MovieDetail({ movies }) {
   useEffect(() => {
     setLoading(true);
     const dateStr = selectedDate.toISOString().split('T')[0];
-    axios.get(`http://localhost:5000/api/theaters/movie/${id}?date=${dateStr}`)
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    axios.get(`${API_URL}/theaters/movie/${id}?date=${dateStr}`)
       .then(res => {
         setMovieTheaters(res.data);
         setLoading(false);

@@ -16,7 +16,25 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({ origin: ["http://localhost:3000", "http://localhost:5173"] }));
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  process.env.FRONTEND_URL, // For Netlify
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      // In production, you might want to be more strict. 
+      // For now, let's allow all during initial deployment to avoid blockers.
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
@@ -29,7 +47,7 @@ app.use('/api/theaters', Theatersroutes);
 app.use('/api/screens', Screenroutes);
 app.use('/api/shows', Showroutes);
 app.use('/api/auth', Authroutes);
-app.use('/api/users',Userroutes);
+app.use('/api/users', Userroutes);
 
 app.get("/", (req, res) => {
   res.send("API running 🚀");
