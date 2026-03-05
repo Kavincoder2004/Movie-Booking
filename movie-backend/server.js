@@ -16,20 +16,30 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:5173",
-  process.env.FRONTEND_URL, // For Netlify
-].filter(Boolean);
-
-app.use(cors({
-  origin: true,
-  credentials: true
-}));
+app.use(cors()); // Most permissive: allow everything
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
+});
+
+// Health check route
+app.get("/api/health", async (req, res) => {
+  try {
+    const mongoose = (await import("mongoose")).default;
+    const dbState = mongoose.connection.readyState;
+    const states = ["disconnected", "connected", "connecting", "disconnecting"];
+    res.json({
+      status: "alive",
+      database: states[dbState] || "unknown",
+      env: {
+        hasMongoUri: !!process.env.MONGO_URI,
+        hasFrontendUrl: !!process.env.FRONTEND_URL
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ status: "error", error: err.message });
+  }
 });
 
 
