@@ -39,7 +39,7 @@ function Login() {
 
                 const { sub: googleId, email, name } = userInfo.data;
 
-                const res = await axios.post('http://localhost:5000/api/auth/google-auth', {
+                const res = await axios.post(`${API_URL}/auth/google-auth`, {
                     googleId,
                     email,
                     name
