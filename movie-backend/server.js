@@ -1,6 +1,4 @@
-import dns from "dns";
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
-dns.setDefaultResultOrder("ipv4first");
+// Removed manual DNS overrides for production stability
 import express from 'express'
 import dotenv from "dotenv";
 import cors from "cors";
@@ -16,25 +14,41 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors()); // Most permissive: allow everything
+app.use(cors()); // Allow all origins to eliminate CORS as a variable during debugging
 app.use(express.json());
+
+// Request logging
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
 
-// Health check route
+// Robust Health Check
 app.get("/api/health", async (req, res) => {
   try {
     const mongoose = (await import("mongoose")).default;
     const dbState = mongoose.connection.readyState;
     const states = ["disconnected", "connected", "connecting", "disconnecting"];
+
+    // Attempt a real query to verify DB permissions/connectivity
+    let moviesCount = 0;
+    try {
+      const { Movie } = await import("./models/ModelSchema.mjs");
+      moviesCount = await Movie.countDocuments();
+    } catch (dbErr) {
+      console.error("Health check DB query failed:", dbErr);
+      moviesCount = "Error: " + dbErr.message;
+    }
+
     res.json({
       status: "alive",
       database: states[dbState] || "unknown",
+      test_query: {
+        movies_count: moviesCount
+      },
       env: {
         hasMongoUri: !!process.env.MONGO_URI,
-        hasFrontendUrl: !!process.env.FRONTEND_URL
+        NODE_ENV: process.env.NODE_ENV
       }
     });
   } catch (err) {
